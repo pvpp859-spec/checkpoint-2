@@ -6,7 +6,10 @@ timpo = 0.5
 time.sleep(timpo)
 os.system("cls")
 
-from tarefas import adicionar_tarefas,lista_tarefas,listar_tarefas,concluir_tarefa
+
+from tarefas import adicionar_tarefas,lista_tarefas,listar_tarefas,concluir_tarefa,carregar_dados,salvar_dados
+
+carregar_dados()
 
 while True:
     time.sleep(timpo)
@@ -24,6 +27,7 @@ while True:
         nova_tarefa = str(input("qual tarefa voce quer adicionar: "))
         adicionar_tarefas(nova_tarefa)
         print("tarefa adicionada!!")
+        salvar_dados()
     elif escolha == 2:
         time.sleep(timpo)
         os.system("cls")
@@ -34,6 +38,7 @@ while True:
         listar_tarefas()
         indice = int(input("qual tarefa voce quer concluir: ")) - 1
         concluir_tarefa(indice)
+        salvar_dados()
     elif escolha == 4:
         print("saindo")
         break        

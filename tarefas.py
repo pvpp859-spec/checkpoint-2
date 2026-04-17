@@ -3,18 +3,19 @@ import json
 lista_tarefas = []
 
 def salvar_dados():
-    with open("dados.json","w"):
-        json.dump()
+    with open("dados.json","w") as arquivo:
+        json.dump(lista_tarefas,arquivo,indent=4)
 
 def carregar_dados():
-    with open("dados.json","r"):
-        try:
-            json.load()
-        except FileNotFoundError:
-            print("arquivo não existe")
-            print("criando novo arquivo")
-            salvar_dados()
-
+    global lista_tarefas
+    try:
+        with open("dados.json", "r") as arquivo:
+            lista_tarefas = json.load(arquivo)
+    except (FileNotFoundError, json.JSONDecodeError):
+        print("arquivo não existe ou está vazio")
+        lista_tarefas = []
+        salvar_dados()
+        
 def adicionar_tarefas(descricao):
     tarefa = {"descrição": descricao,"concluida" : False}
     lista_tarefas.append(tarefa)
