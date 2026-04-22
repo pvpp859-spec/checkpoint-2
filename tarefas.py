@@ -27,3 +27,6 @@ def listar_tarefas():
 
 def concluir_tarefa(indice):
     lista_tarefas[indice]["concluida"] = True
+
+def remover_tarefa(indice):
+     lista_tarefas.pop(indice)   
