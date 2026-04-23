@@ -29,16 +29,19 @@ while True:
         print("tarefa adicionada!!")
         salvar_dados()
         while True:
-            escolha == str(input("quer adicionar mais alguma tarefa? :"))
-            if escolha == "sim" or escolha == "s":
+
+            escolha = input("quer adicionar mais alguma tarefa? :").lower()
+
+            if escolha in ("sim", "s"):
                 nova_tarefa = str(input("qual tarefa voce quer adicionar: "))
                 adicionar_tarefas(nova_tarefa)
                 print("tarefa adicionada!!")
                 salvar_dados()
-            elif escolha == "não" or escolha == "não" or escolha == "n":
+            elif escolha in ("não", "nao","n"):
                 break
             else:
                 print("ERRO")    
+
     elif escolha == 2:
         time.sleep(timpo)
         os.system("cls")
